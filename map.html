@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Telangana Map</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        /* Full-viewport Map */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        #map {
+            height: 90vh; /* Increased map height for a more professional look */
+            width: 100vw;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        .leaflet-container {
+            background-color: #e6f2ff;
+        }
+        /* Styling for popup content */
+        .popup-content {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .icon {
+            font-size: 18px;
+            margin-right: 5px;
+        }
+        .popup-icons {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+        }
+        /* Fancy box shadow for a modern look */
+        .leaflet-popup-content-wrapper {
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        /* Title Styling */
+        .title {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 36px; /* Increased font size for professional look */
+            font-weight: bold;
+            color: #003366; /* Dark blue color for title */
+            text-transform: uppercase;
+        }
+        /* Navbar dark blue with white text */
+        .navbar {
+            background-color: #003366 !important;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .nav-link:hover {
+            color: #cce7ff !important; /* Lighter blue on hover for better contrast */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Collaboration Portal</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Title -->
+<div class="title">Map</div>
+
+<!-- Map Container -->
+<div id="map"></div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// Initialize the map and set the bounds to Telangana
+var map = L.map('map').setView([17.9784, 79.5941], 7);
+
+// Limit map to Telangana region
+var telanganaBounds = [
+    [15.9, 77.0], // Southwest corner
+    [19.5, 81.0]  // Northeast corner
+];
+
+// Fit the map to these bounds
+map.fitBounds(telanganaBounds);
+
+// Add a tile layer (OpenStreetMap) with a fancy style
+L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors',
+    maxZoom: 10, // Restrict zoom to keep Telangana map visible
+    minZoom: 6
+}).addTo(map);
+
+// Sample Data for Telangana Locations
+var locations = [
+    {
+        name: "Hyderabad",
+        lat: 17.3850,
+        lng: 78.4867,
+        positiveImpacts: "IT Hub, Job Creation, Smart City Development",
+    },
+    {
+        name: "Warangal",
+        lat: 17.9784,
+        lng: 79.6010,
+        positiveImpacts: "Cultural Heritage, Tourism Growth, Agricultural Hub",
+    },
+    {
+        name: "Khammam",
+        lat: 17.2473,
+        lng: 80.1437,
+        positiveImpacts: "Mining Industry, River Development, Infrastructure Boost",
+    }
+];
+
+// Function to add markers for each location
+locations.forEach(function(location) {
+    var marker = L.marker([location.lat, location.lng]).addTo(map);
+    marker.bindPopup(`
+        <div class="popup-content">
+            <div class="popup-icons">
+                <i class="icon bi bi-geo-alt-fill"></i><strong>${location.name}</strong>
+            </div>
+            <div class="popup-icons">
+                <i class="icon bi bi-award-fill"></i> Positive Impacts: ${location.positiveImpacts}
+            </div>
+        </div>
+    `);
+});
+
+</script>
+
+<!-- Bootstrap Icons -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+</body>
+</html>
