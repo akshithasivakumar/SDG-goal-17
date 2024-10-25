@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - Collaboration Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f1e8;
+        }
+        .header {
+            background-color: #6c757d;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        .btn-custom {
+            background-color: #28a745;
+            color: white;
+        }
+        .tab-pane {
+            margin-top: 2rem;
+        }
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2>Create Account - Collaboration Portal</h2>
+    </div>
+
+    <!-- Navigation Tabs for Individuals and Business -->
+    <ul class="nav nav-tabs" id="accountTabs" role="tablist">
+        <li class="nav-item">
+            <button class="nav-link active" id="individual-tab" data-bs-toggle="tab" data-bs-target="#individual" type="button" role="tab" aria-controls="individual" aria-selected="true">Individuals</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" id="business-tab" data-bs-toggle="tab" data-bs-target="#business" type="button" role="tab" aria-controls="business" aria-selected="false">Business</button>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <!-- Individuals Form -->
+        <div class="tab-pane fade show active" id="individual" role="tabpanel" aria-labelledby="individual-tab">
+            <div class="card p-4">
+                <form action="login.html">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="age" class="form-label">Age</label>
+                        <input type="number" class="form-control" id="age" placeholder="Enter your age">
+                    </div>
+                    <div class="mb-3">
+                        <label for="occupation" class="form-label">Occupation</label>
+                        <input type="text" class="form-control" id="occupation" placeholder="Enter your occupation">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email address">
+                    </div>
+                    <div class="mb-3">
+                        <label for="userid" class="form-label">User ID</label>
+                        <input type="text" class="form-control" id="userid" placeholder="Enter User ID">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter Password" minlength="8" required
+                               title="Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, and a number.">
+                    </div>
+                    <button type="submit" class="btn btn-custom w-100">Create Individual Account</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Business Form -->
+        <div class="tab-pane fade" id="business" role="tabpanel" aria-labelledby="business-tab">
+            <div class="card p-4">
+                <form action="login.html">
+                    <div class="mb-3">
+                        <label for="companyname" class="form-label">Name of Organisation</label>
+                        <input type="text" class="form-control" id="companyname" placeholder="Enter Organisation Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="sector" class="form-label">Sector</label>
+                        <input type="text" class="form-control" id="sector" placeholder="Enter Sector">
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="location" placeholder="Enter Location">
+                    </div>
+                    <div class="mb-3">
+                        <label for="contact" class="form-label">Contact Info</label>
+                        <input type="text" class="form-control" id="contact" placeholder="Enter Contact Information">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email address">
+                    </div>
+                    <div class="mb-3">
+                        <label for="userid" class="form-label">User ID</label>
+                        <input type="text" class="form-control" id="userid" placeholder="Enter User ID">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter Password" minlength="8" required
+                               title="Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, and a number.">
+                    </div>
+                    <button type="submit" class="btn btn-custom w-100">Create Business Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
